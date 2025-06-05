@@ -1,53 +1,53 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class GolfMain {
-    private static final int[] PARS = {4, 4, 3, 4, 5, 4, 5, 3, 4, 4, 3, 4, 5, 4, 3, 4, 5, 4};
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        int[] pars = {4, 4, 3, 4, 5, 4, 5, 3, 4, 4, 3, 4, 5, 4, 3, 4, 5, 4};
+        Scanner sc = new Scanner(System.in);
+
         while (true) {
             System.out.print("スコアをカンマ区切りで入力してください > ");
-            String input = scanner.nextLine().replace(" ", "");
+            String line = sc.nextLine();
 
-            if (input.isEmpty()) {
+            if (line.trim().isEmpty()) {
                 System.out.println("空の入力です。もう一度入力してください。");
                 continue;
             }
 
-            String[] tokens = input.split(",");
-            List<Integer> scores = new ArrayList<>();
+            String[] arr = line.replace(" ", "").split(",");
+            int[] scores = new int[18];
+            int count = 0;
             boolean error = false;
 
-            for (String token : tokens) {
+            for (int i = 0; i < arr.length && count < 18; i++) {
+                if (arr[i].isEmpty()) continue;
                 try {
-                    int score = Integer.parseInt(token);
-                    if (score <= 0) {
+                    int n = Integer.parseInt(arr[i]);
+                    if (n <= 0) {
                         System.out.println("0以下の数値が含まれています。");
                         error = true;
                         break;
                     }
-                    if (scores.size() < PARS.length) {
-                        scores.add(score); // 19ホール以降は無視
-                    }
+                    scores[count] = n;
+                    count++;
                 } catch (NumberFormatException e) {
-                    System.out.println("不正な文字が含まれています。数字とカンマのみ使用してください。");
+                    System.out.println("不正な文字が含まれています。");
                     error = true;
                     break;
                 }
             }
 
-            if (error || scores.isEmpty()) continue;
+            if (count == 0 || error) continue;
 
             int total = 0;
-            for (int i = 0; i < scores.size(); i++) {
-                total += scores.get(i) - PARS[i];
+            for (int i = 0; i < count; i++) {
+                total += scores[i] - pars[i];
             }
 
-            System.out.printf("%dホール終了しました。スコア：%+d\n", scores.size(), total);
+            System.out.printf("%dホール終了しました。スコア：%+d\n", count, total);
             break;
         }
-        scanner.close();
+
+        sc.close();
     }
 }
