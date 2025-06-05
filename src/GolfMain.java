@@ -6,7 +6,7 @@ public class GolfMain {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            System.out.print("スコアをカンマ区切りで入力してください > ");
+            System.out.print("スコアをカンマ区切りで入力してください :	 ");
             String line = sc.nextLine();
 
             if (line.trim().isEmpty()) {
@@ -44,7 +44,8 @@ public class GolfMain {
                 total += scores[i] - pars[i];
             }
 
-            System.out.printf("%dホール終了しました。スコア：%+d\n", count, total);
+            System.out.println(count + "ホール終了しました。スコア：" + total);
+
             break;
         }
 
