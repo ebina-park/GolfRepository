@@ -26,39 +26,40 @@ public class keisan {
                 }
             }
 
-            // 숫자 개수가 2개가 아니거나 연산자 없음
+            // num 개수가 2개가 아니거나 연산자 없음
             if (numbers.length != 2 || operator == ' ') {
                 System.out.println("正しくない入力です");
                 continue;
             }
 
             try {
-                int 숫자1 = Integer.parseInt(numbers[0]);
-                int 숫자2 = Integer.parseInt(numbers[1]);
+                int num1 = Integer.parseInt(numbers[0]);
+                int num2 = Integer.parseInt(numbers[1]);
                 int result = 0;
 
                 switch (operator) {
                     case '+':
-                        result = 숫자1 + 숫자2;
+                        result = num1 + num2;
                         break;
                     case '-':
-                        result = 숫자1 - 숫자2;
+                        result = num1 - num2;
                         break;
                     case '*':
-                        result = 숫자1 * 숫자2;
+                        result = num1 * num2;
                         break;
                     case '/':
-                        if (숫자2 == 0) {
-                            System.out.println("0으로 나눌 수 없습니다.");
+                        if (num2 == 0) {
+                            System.out.println("0は使えません.");
                             continue;
                         }
-                        result = 숫자1 / 숫자2;
+                        result = num1 / num2;
                         break;
                 }
 
-                System.out.println("결과: " + result);
+                System.out.println("結果: " + result);
+                break;
             } catch (NumberFormatException e) {
-                System.out.println("숫자 형식이 잘못되었습니다.");
+                System.out.println("正しくない形式です");
             }
         }
     }

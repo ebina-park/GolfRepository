@@ -44,7 +44,7 @@ public class GolfMatch {
         return true;
     }
 
-    public void printResult() {
+    	public void printResult() {
         int total1 = player1.calculateTotalScore(pars);
         int total2 = player2.calculateTotalScore(pars);
 
