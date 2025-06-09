@@ -1,12 +1,14 @@
+package Practice02;
+
 import java.util.Scanner;
 
 public class GolfMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        GolfGame game = new GolfGame();
-
+        GolfMatch match = new GolfMatch();
+ 
         while (true) {
-            System.out.print("スコアをカンマ区切りで入力してください : ");
+            System.out.print("選手名2人と36個のスコアをカンマ区切りで入力してください : ");
             String input = sc.nextLine();
 
             if (input.trim().isEmpty()) {
@@ -14,8 +16,8 @@ public class GolfMain {
                 continue;
             }
 
-            if (game.inputScores(input)) {
-                game.calculateAndPrintScore();
+            if (match.inputPlayersAndScores(input)) {
+                match.printResult();
                 break;
             }
         }
