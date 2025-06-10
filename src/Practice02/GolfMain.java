@@ -21,7 +21,7 @@ public class GolfMain {
                 break;
             }
         }
-
+ 
         sc.close();
     }
 }

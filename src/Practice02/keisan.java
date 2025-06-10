@@ -7,18 +7,17 @@ public class keisan {
         
         while (true) {
             System.out.println("値を入力してください: ");
-            String input = sc.nextLine().trim();  // 공백 제거 + 엔터만 눌렀을 때 방지
-
+            String input = sc.nextLine().trim(); 
             if (input.isEmpty()) {
                 System.out.println("空欄✖.");
                 continue;
             }
 
-            input = input.replaceAll(" ", "");  // 중간 공백 제거
+            input = input.replaceAll(" ", "");  
             String[] numbers = input.split("[+\\-*/]");
             char operator = ' ';
 
-            // 연산자 찾기
+           
             for (char c : input.toCharArray()) {
                 if (c == '+' || c == '-' || c == '*' || c == '/') {
                     operator = c;
@@ -26,7 +25,7 @@ public class keisan {
                 }
             }
 
-            // num 개수가 2개가 아니거나 연산자 없음
+            
             if (numbers.length != 2 || operator == ' ') {
                 System.out.println("正しくない入力です");
                 continue;
